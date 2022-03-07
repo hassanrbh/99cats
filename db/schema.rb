@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_06_201635) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_07_111531) do
+  create_table "cat_rental_requests", force: :cascade do |t|
+    t.integer "cat_id", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.string "status", default: "PENDING", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cat_id"], name: "index_cat_rental_requests_on_cat_id"
+  end
+
   create_table "cats", force: :cascade do |t|
     t.date "birth_date", null: false
     t.string "color", null: false
