@@ -41,4 +41,11 @@ class Cat < ApplicationRecord
         # Time.zone.now.year - birth_date.year, This trick is works to months
         ((Time.zone.now - birth_date.to_time) / 1.year.seconds ).floor
     end
+
+    # ! Association Between CAT and Catrental
+    has_many :cat_rental_requests,
+        class_name: 'CatRentalRequest',
+        primary_key: :id,
+        foreign_key: :cat_id,
+        dependent: :destroy
 end
