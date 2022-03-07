@@ -1,0 +1,41 @@
+<style>
+input {
+    margin: 10px;
+}
+</style>
+<h2>Update <%= @cat.name %></h2>
+
+<%= render 'form', action: :edit, cat: @cat%>
+
+<!-- <form action="<%= cat_url(@cat) %>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <label for="cat">Name </label>
+    <input type="text" id="cat" name="cats[name]" value="<%= @cat.name%>">
+    <br>
+    <label for="male_cat">Male</label>
+    <input type="radio" id="male_cat" name="cats[sex]" value="M"
+    <%= "checked" if @cat.sex == "M" %>>
+    <label for="female_cat">Female</label>
+    <input type="radio" id="female_cat" name="cats[sex]" value="F" 
+    <%= "checked" if @cat.sex == "F" %>> 
+    <br>
+    <label for="cats_color">Color</label>
+    <select name="cats[color]" id="cats_color">
+        <option disabled selected>--Click 👽 --</option>
+        <% Cat::CATS_COLORS.each do |color| %>
+            <option value="<%= color %>"
+            <%= "selected" if @cat.color == color %>><%= color %></option>
+        <% end %>
+    </select>
+    <br>
+    <label for="date_cat">Date</label>
+    <input type="date" id="date_cat" name="cats[birth_date]" value="<%= @cat.birth_date %>">
+    <br>
+    <label></label>
+    <textarea id="description_area" name="cats[description]">
+    <%= @cat.description %>
+    </textarea>
+    <br>
+
+    <input type="submit" style="margin: 10px;" value="Update Cat">
+</form> -->

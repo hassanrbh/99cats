@@ -1,0 +1,39 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    margin: 190px;
+    font-size: 30px;
+    font-weight: bold;
+}
+</style>
+<h2>This is A table for <mark><%= @cat.name %></mark></h2>
+<!-- Making A table for our cats-->
+<table>
+    <tr>
+        <th scope="col" >Attributes</th>
+        <th scope="col" >Values</th>
+    </tr>
+    <tr>
+        <td><mark>Name</mark></td>   
+        <td><%= @cat.name %></td>    
+    </tr>
+    <tr>
+        <td><mark>Color</mark></td>
+        <td><%= @cat.color %></td>
+    </tr>
+    <tr>
+        <td><mark>Sex</mark></td>
+        <td><%= @cat.sex %></td>
+    </tr>
+    <tr>
+        <td><mark>Birth Date</mark></td>
+        <td><%= @cat.birth_date %></td>
+    </tr>
+    <tr>
+        <td><mark>Description</mark></td>
+        <td><%= @cat.description %></td>
+    </tr>
+</table>
+
+</h3>Edit Me</h3>
+<%= link_to 'Edit Me', edit_cat_url(@cat) %>
