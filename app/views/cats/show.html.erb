@@ -1,14 +1,20 @@
 <style>
 table, th, td {
     border: 1px solid black;
-    margin: 190px;
-    font-size: 30px;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+a {
+    color: blue;
+    margin-top: 20px;
     font-weight: bold;
 }
 </style>
 <h2>This is A table for <mark><%= @cat.name %></mark></h2>
 <!-- Making A table for our cats-->
 <table>
+    <tr><th colspan="2" style="color: red ">Vital</th></tr>
     <tr>
         <th scope="col" >Attributes</th>
         <th scope="col" >Values</th>
@@ -34,6 +40,24 @@ table, th, td {
         <td><%= @cat.description %></td>
     </tr>
 </table>
+<table>
+    <tr><th colspan="4">Rental Requests</th></tr>
+    <tr>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Status</th>
+    </tr>
+    <%@cat.cat_rental_requests.each do |cat_rental_request|%>
+        <tr>
+            <td><mark><%= cat_rental_request.start_date %></mark></td>
+            <td><mark><%= cat_rental_request.end_date%></mark></td>
+            <td><mark><%= cat_rental_request.status%></mark></td>
+        </tr>
+    <%end%>
+</table>
 
-</h3>Edit Me</h3>
+<%= link_to 'Make New Request' , new_cat_rental_request_url %>
+
+<br>
+
 <%= link_to 'Edit Me', edit_cat_url(@cat) %>

@@ -1,0 +1,28 @@
+<style>
+input {
+    margin: 5px;
+}
+</style>
+
+<h2>
+    Cat Rental Request Provider
+</h2>
+
+<!-- Create A new form for creating cat rental requests -->
+<form action= "<%= cat_rental_requests_url %>" method="post">
+    <label for= "cats">Cat</label>
+    <select name= "cat_rental_requests[cat_id]" id="cats">
+        <option selected disabled >-- Select Me 😘 --</option>
+        <% Cat.all.each do |cat| %>
+            <option value="<%= cat.id %>"><%= cat.name.upcase %></option>
+        <%end%>
+    </select>
+    <br>
+    <label for="start_date">Start Date </label>
+    <input type="date" name= "cat_rental_requests[start_date]" id="start_date"></input>
+    <br>
+    <label for="end_date">End Date</label>
+    <input type="date" name= "cat_rental_requests[end_date]" id="end_date"></input>
+    <br>
+    <input type="submit" value="Send Request"></input>
+</form>
