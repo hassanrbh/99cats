@@ -43,4 +43,34 @@ class CatRentalRequest < ApplicationRecord
     def does_not_overlap_approved_request
         overlapping_approved_requests.exists?
     end
+    
+    # This functionality will make any user can approve or deny a cat's catrentalrequest
+    # * Rule 1: when approving a cat rental and set their status to APPROVED , all the other catrental requests that belongs_to the same cat will DENIED
+    def overlapping_pending_requests
+        overlapping_requests.where(:status => "PENDING")
+    end
+    def approve!
+        # change the current instance status from 'PENDING' to 'APPROVED'
+        raise "still pending" unless self.status = "PENDING"
+        unless self.status == "APPROVED"
+            self.status = "APPROVED"
+            self.save! 
+            self.overlapping_pending_requests.transaction do |pending_request|
+                # also we can use update! instaead of this crappy methods 
+                # pending_request.status = "DENIED"
+                # pending_request.save!
+                pending_request.update!(:status => "DENIED")
+            end
+        else
+            self.errors.add(:status,"you already #{self.status}")
+        end
+    end
+    def deny!
+        unless self.status == "DENIED"
+            self.status = "DENIED"
+            self.save!
+        else
+            self.errors.add(:status, "already DENIED")
+        end
+    end
 end
