@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       post :deny
     end
   end
+  resources :users, only: [:show ,:new, :create]
+  resource :session
 end

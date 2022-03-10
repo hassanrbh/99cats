@@ -1,0 +1,26 @@
+<h1> Create Users </h1>
+
+<form action="<%= users_path %>" method="post">
+  <!-- Protection from csrf -->
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <label for="email">Email</label>
+  <input type="email"
+    id="email"
+    name="users[email]"
+    value="<%= @user.email %>">
+
+  <br>
+
+  <label for="password">Password</label>
+  <input type="password"
+    name="users[password]"
+    id="password">
+
+  <br>
+
+  <input type="submit" value="Create User" style="border: 10px; margin: 10px;">
+</form>

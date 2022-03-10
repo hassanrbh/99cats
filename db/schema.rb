@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_07_111531) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_10_203817) do
   create_table "cat_rental_requests", force: :cascade do |t|
     t.integer "cat_id", null: false
     t.date "start_date", null: false
@@ -29,6 +29,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_111531) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "session_token"
+    t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
 end

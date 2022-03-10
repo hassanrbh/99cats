@@ -59,6 +59,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "annotate"
+  gem 'bcrypt', '~> 3.1.7'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
