@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
         session[:session_token] = user.session_token
     end
 
+    # destroy methdod for loging out
+    def logout!
+        current_user.try(:reset_session_token!)
+        session[:session_token] = nil
+    end
+
     # fetches the user who login in
     def current_user
         return nil if session[:session_token].nil?

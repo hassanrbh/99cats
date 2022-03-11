@@ -13,6 +13,11 @@ class SessionsController < ApplicationController
         end
     end
 
+    def destroy
+        logout!
+        redirect_to new_session_url
+    end
+
     def new
         render :new
     end
