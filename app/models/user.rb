@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
 
   # find the user by credentials
-  def find_by_credentials!(email,password)
+  def self.find_by_credentials!(email,password)
     user = User.find_by(:email => email) # find the user 
     return nil if user.nil? # return nil if the user is not found
     user.is_password!(password) ? user : nil
