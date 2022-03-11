@@ -14,6 +14,11 @@ class ApplicationController < ActionController::Base
         session[:session_token] = user.session_token
     end
 
+    # protects the users#show method
+    def require_current_user! 
+        redirect_to new_session_url if current_user.nil?
+    end
+
     # destroy methdod for loging out
     def logout!
         current_user.try(:reset_session_token!)
