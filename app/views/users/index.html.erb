@@ -1,0 +1,6 @@
+<h2>Hello All , This is my Application, you can see the users Who login</h2>
+<ul>
+    <% @users.each do |user| %>
+        <h3><%= user.email %></h3>
+    <% end %>
+</ul>

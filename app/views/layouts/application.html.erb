@@ -11,20 +11,22 @@
   </head>
 
   <body>
-    <% if !current_user.nil? %>
-      <ul>
-         <li>loging in as <%= current_user.email %> </li>
-         <li>
-            <form action="<%= session_path %>" method="POST">
-              <input type="hidden"
-                     name="authenticity_token"
-                     value="<%= form_authenticity_token %>">
-              <input type="hidden" name="_method" value="DELETE">
-              <input type="submit" value="logout">
-            </form>  
-         </li>
-      </ul>
+    <nav class="main-nav">
+    <div> 
+    <% if current_user.nil? %>
+      <a href="<%= signin_path %>" style="display: inline; justify-content: right">Sign In</a>
+      <a href="<%= signup_path %>" style="display: inline; justify-content: right">Sign Up</a>
+    <% else %>
+      <%= current_user.password %>
+      <form action="<%= session_path %>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="DELETE">
+
+        <input type="submit" value="logout">
+      </form>
     <% end %>
+    </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

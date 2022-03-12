@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user
+    helper_method :login!
     # Protect for SCRF Attacks
     protect_from_forgery with: :exception
 
@@ -16,7 +17,7 @@ class ApplicationController < ActionController::Base
 
     # protects the users#show method
     def require_current_user! 
-        redirect_to new_session_url if current_user.nil?
+        redirect_to user_url(params[:id]) if current_user.nil?
     end
 
     # destroy methdod for loging out

@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :session_token, presence: true
   validates :email, presence: true
   validates :password_digest, presence: { message: ' can\'t be blank' }
+  # check the length of the password that is not hashed 
   validates :password, length: {minimum: 6, allow_nil: true}
   after_initialize :ensure_session_token
 
