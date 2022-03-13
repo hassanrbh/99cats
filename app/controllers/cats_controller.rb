@@ -1,4 +1,5 @@
 class CatsController < ApplicationController
+    before_action :owns_cat?, only: [:edit, :update]
     def index
         @cats = Cat.all
         render :index
@@ -33,11 +34,11 @@ class CatsController < ApplicationController
             redirect_to signin_url
             return
         end
-        @cat = Cat.find_by(:id => params[:id])
+        @cat = current_user.cats.find_by(:id => params[:id])
         render :edit
     end
     def update
-        @cat = Cat.find_by(:id => params[:id])
+        @cat = current_user.cats.find_by(:id => params[:id])
         if @cat.update(cats_params)
             redirect_to cat_url(@cat)
         else

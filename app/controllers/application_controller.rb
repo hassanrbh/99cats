@@ -33,6 +33,12 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find_by(:session_token => session[:session_token])
     end
     
+    # check if the current_user owns a cat
+    def owns_cat?
+        if current_user.cats.find_by(:id => params[:id]).nil?
+            redirect_to cats_url
+        end
+    end
     # check if the user is login in
     def login_in!
         current_user != nil
