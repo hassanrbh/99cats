@@ -19,6 +19,12 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6, allow_nil: true}
   after_initialize :ensure_session_token
 
+  # Association Between User and Cat
+  has_many :cats,
+      class_name: 'Cat',
+      foreign_key: :user_id,
+      primary_key: :id,
+      dependent: :destroy
   def password=(password) # wen the user input a password directly runs to this password function to make it even more secure
     @password = password # set an instance method for storing the password and not persisted in the db
     self.password_digest = BCrypt::Password.create(password)

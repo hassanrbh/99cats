@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
     # login functionality is to prevent from many logins to the same user session and she protect that by called a function in the user model that 
     # reset the current_session_token 
-    def login!(user)
+    def login_user!(user)
         # force other clients to log out by regenerating a new session token
         user.reset_session_token!
         # log in this client
@@ -15,7 +15,12 @@ class ApplicationController < ActionController::Base
         session[:session_token] = user.session_token
     end
 
-    # protect the cats#show method
+    def already_logged_in?
+        if login_in!
+            flash[:error] = "You already login In"
+            redirect_to cats_path
+        end
+    end
     # destroy methdod for loging out
     def logout!
         current_user.try(:reset_session_token!)

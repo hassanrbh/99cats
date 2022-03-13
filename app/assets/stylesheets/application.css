@@ -103,3 +103,15 @@ div li button a {
     color: #d8000c;
     background-color: #FFBABA;
 }
+#already_logged_in {
+    padding-left: 30px;
+    height: 25px;
+    color: #d8000c;
+    background-color: #FFBABA;
+    animation-name: error-login;
+    animation-duration: 4s;
+}
+@keyframes error-login {
+    0% { top: 0px; background: #FFBABA; width: 100%;}
+    100% {top: 200px; background: springgreen; width: 300px;}
+}

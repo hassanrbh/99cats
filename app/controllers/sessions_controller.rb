@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    before_action :already_logged_in?, only: [:new, :create]
     def create
         user = User.find_by_credentials!(
             params[:users][:email],
@@ -8,7 +9,7 @@ class SessionsController < ApplicationController
         if user.nil?
             redirect_to :new_session, alert: "User not Found"
         else
-            login!(user)
+            login_user!(user)
             redirect_to cats_url
         end
     end

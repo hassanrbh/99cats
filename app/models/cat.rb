@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: cats
@@ -10,6 +11,7 @@
 #  description :text             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  user_id     :integer
 #
 class Cat < ApplicationRecord
     CATS_COLORS = [
@@ -36,6 +38,7 @@ class Cat < ApplicationRecord
         message: "you shoose is not supported, if your cat gay pliz contact 911 :)"
     }
     validates :description, presence: true
+    validates :user_id, presence: true
 
     def age
         # Time.zone.now.year - birth_date.year, This trick is works to months
@@ -47,5 +50,11 @@ class Cat < ApplicationRecord
         class_name: 'CatRentalRequest',
         primary_key: :id,
         foreign_key: :cat_id,
+        dependent: :destroy
+    # Association Between Cat and users
+    belongs_to :owner,
+        class_name: 'User',
+        foreign_key: :user_id,
+        :primary_key => :id,
         dependent: :destroy
 end

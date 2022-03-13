@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :already_logged_in?, only: [:new, :create]
   # before action for the user to not see the users#show before log in
   def index
     @users = User.all
@@ -6,10 +7,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      login!(@user)
-      redirect_to user_path(@user)
+      login_user!(@user)
+      redirect_to cats_url
     else
-      render :json => @user.errors.full_messages, :status => :unprocessable_entity
+      redirect_to :new_session, success: "User already Exist"
     end
   end
 
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user.nil?
-      redirect_to new_session_path
+      redirect_to new_user_path
       return 
     end
     @user = current_user

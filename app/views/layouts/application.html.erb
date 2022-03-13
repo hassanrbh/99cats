@@ -9,12 +9,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
     <nav class="main-nav">
-    <h1>
+    <header>
       <a href="<%= cats_path %>">99 Cats</a>
-    </h1>
+    </header>
     <div class="nav-login">
     <% if current_user.nil? %>
       <a href="<%= signin_path %>">Sign In</a>
@@ -33,6 +32,14 @@
     <% end %>
     </div>
     </nav>
+    <br />
+    <% unless current_user.nil?%>
+      <div id="already_logged_in">
+        <% flash.each do |type,message| %>
+          <%= message %>
+        <% end %>
+      </div>
+    <%end%>
     <main>  
       <section class="cat-index-holder">
         <h1>ALL OF THE CATS IN THE WORLD</h1>

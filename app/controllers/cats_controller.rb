@@ -5,7 +5,7 @@ class CatsController < ApplicationController
     end
     def show
         if current_user.nil?
-            redirect_to new_session_path
+            redirect_to signin_url
             return
         end
         @cat = Cat.find_by(:id => params[:id])
@@ -13,7 +13,7 @@ class CatsController < ApplicationController
     end
     def new
         if current_user.nil?
-            redirect_to new_session_path
+            redirect_to signin_url
             return
         end
         @cat = Cat.new
@@ -21,6 +21,7 @@ class CatsController < ApplicationController
     end
     def create
         @cat = Cat.new(cats_params)
+        @cat.user_id = params[:user_id]
         if @cat.save
             redirect_to cat_url(@cat)
         else
@@ -29,7 +30,7 @@ class CatsController < ApplicationController
     end
     def edit
         if current_user.nil?
-            redirect_to new_session_path
+            redirect_to signin_url
             return
         end
         @cat = Cat.find_by(:id => params[:id])
@@ -45,6 +46,6 @@ class CatsController < ApplicationController
     end
     protected
     def cats_params
-        params.require(:cats).permit(:name,:color,:sex,:description,:birth_date)
+        params.require(:cats).permit(:name,:color,:sex,:description,:birth_date,:user_id)
     end
 end
