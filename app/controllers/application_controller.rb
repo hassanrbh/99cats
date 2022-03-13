@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user
-    add_flash_types :success, :error, :warning
+    add_flash_types :success, :error,:warning
     # Protect for SCRF Attacks
     protect_from_forgery with: :exception
 
@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     # reset the current_session_token 
     def login_user!(user)
         # force other clients to log out by regenerating a new session token
-        user.reset_session_token!
+        #user.reset_session_token!
         # log in this client
         @current_user = user
         session[:session_token] = user.session_token

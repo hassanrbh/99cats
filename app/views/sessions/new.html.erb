@@ -5,7 +5,7 @@
               <%= message %>
        </div>
 <% end %>
-<form action="<%= session_path %>" method="POST">
+<form action="<%= sessions_url %>" method="POST">
     <!-- For preventing attackers to malicous post request to our session-->
     <input type="hidden"
            name="authenticity_token"

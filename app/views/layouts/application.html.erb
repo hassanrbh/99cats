@@ -23,7 +23,7 @@
     <div>
       <%= current_user.email%>
       <br />
-      <form action="<%= session_path %>" method="POST">
+      <form action="<%= session_path(current_user) %>" method="POST">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="_method" value="DELETE">
 
