@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
         )
 
         if user.nil?
-            render :json => "Credentials are wrong"
+            redirect_to :new_session, alert: "User not Found"
         else
             login!(user)
-            redirect_to user_path(user)
+            redirect_to cats_url
         end
     end
 

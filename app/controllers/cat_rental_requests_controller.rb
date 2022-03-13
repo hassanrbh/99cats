@@ -1,5 +1,9 @@
 class CatRentalRequestsController < ApplicationController
     def new
+        if current_user.nil?
+            redirect_to new_session_path
+            return
+        end
         render :new
     end
 

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  #before_action :require_current_user!, only: [:create, :new]
   # before action for the user to not see the users#show before log in
   def index
     @users = User.all
@@ -21,7 +20,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user.nil?
-      redirect_to new_user_path
+      redirect_to new_session_path
       return 
     end
     @user = current_user

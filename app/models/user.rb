@@ -12,8 +12,8 @@
 class User < ApplicationRecord
   attr_reader :password
   
-  validates :session_token, presence: true
-  validates :email, presence: true
+  validates :session_token, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: { message: ' can\'t be blank' }
   # check the length of the password that is not hashed 
   validates :password, length: {minimum: 6, allow_nil: true}

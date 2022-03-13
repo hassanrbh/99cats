@@ -4,10 +4,18 @@ class CatsController < ApplicationController
         render :index
     end
     def show
+        if current_user.nil?
+            redirect_to new_session_path
+            return
+        end
         @cat = Cat.find_by(:id => params[:id])
         render :show
     end
     def new
+        if current_user.nil?
+            redirect_to new_session_path
+            return
+        end
         @cat = Cat.new
         render :new
     end
@@ -20,6 +28,10 @@ class CatsController < ApplicationController
         end
     end
     def edit
+        if current_user.nil?
+            redirect_to new_session_path
+            return
+        end
         @cat = Cat.find_by(:id => params[:id])
         render :edit
     end

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user
-    helper_method :login!
+    add_flash_types :success
     # Protect for SCRF Attacks
     protect_from_forgery with: :exception
 
@@ -15,11 +15,7 @@ class ApplicationController < ActionController::Base
         session[:session_token] = user.session_token
     end
 
-    # protects the users#show method
-    def require_current_user! 
-        redirect_to user_url(params[:id]) if current_user.nil?
-    end
-
+    # protect the cats#show method
     # destroy methdod for loging out
     def logout!
         current_user.try(:reset_session_token!)
@@ -30,5 +26,10 @@ class ApplicationController < ActionController::Base
     def current_user
         return nil if session[:session_token].nil?
         @current_user ||= User.find_by(:session_token => session[:session_token])
+    end
+    
+    # check if the user is login in
+    def login_in!
+        current_user != nil
     end
 end
