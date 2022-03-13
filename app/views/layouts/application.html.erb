@@ -12,21 +12,33 @@
 
   <body>
     <nav class="main-nav">
-    <div> 
+    <h1>
+      <a href="<%= cats_path %>">99 Cats</a>
+    </h1>
+    <div class="nav-login">
     <% if current_user.nil? %>
-      <a href="<%= signin_path %>" style="display: inline; justify-content: right">Sign In</a>
-      <a href="<%= signup_path %>" style="display: inline; justify-content: right">Sign Up</a>
+      <a href="<%= signin_path %>">Sign In</a>
+      <a href="<%= signup_path %>">Sign Up</a>
     <% else %>
-      <%= current_user.password %>
+    </div>
+    <div>
+      <%= current_user.email%>
+      <br />
       <form action="<%= session_path %>" method="POST">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="_method" value="DELETE">
 
-        <input type="submit" value="logout">
+        <input class="button_logout" type="submit" value="logout">
       </form>
     <% end %>
     </div>
     </nav>
+    <main>  
+      <section class="cat-index-holder">
+        <h1>ALL OF THE CATS IN THE WORLD</h1>
+        <a href="<%= new_cat_path %>">Add Cat</a>
+      </section>
+    </main>
     <%= yield %>
   </body>
 </html>

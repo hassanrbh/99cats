@@ -13,3 +13,75 @@
  *= require_tree .
  *= require_self
  */
+ html, section, body, article, h1, h2, p, nav, main, figure {
+     margin: 0;
+     padding: 0;
+     border: 0;
+     font: inherit;
+     font-size: 19px;
+     text-align: inherit;
+     text-decoration: inherit;
+     background: transparent;
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+ }
+ /* HTML5 display-role reset for older browsers */
+ article, aside, details, figcaption, figure, 
+ footer, header, hgroup, menu, nav, section {
+     display: block;
+ }
+ body {
+     line-height: 1;
+ }
+ ol, ul {
+     list-style: none;
+ }
+ blockquote, q {
+     quotes: none;
+ }
+ blockquote:before, blockquote:after,
+ q:before, q:after {
+     content: '';
+     content: none;
+ }
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.main-nav {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    background-color: #65F4CD;
+    box-sizing: border-box;
+    height: 63px;
+    padding: 0 20px;
+    color: black;
+    width: 100%;
+    font-weight: 100;
+}
+.nav-login {
+    display: flex;
+    justify-content: right
+}
+.main-nav a {
+    padding: 0px 10px;
+    font-weight: 1000;
+    font-size: 30px;
+}
+.main-nav:hover {
+    background-color:aqua;
+}
+div {
+    display: block;
+    padding: 10px;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+.button_logout {
+    background-color: turquoise;
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    padding: 5px 18px;
+}

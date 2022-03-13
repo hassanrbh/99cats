@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "users#index"
+  root "cats#index"
   get "/signup", to: "users#new"
   get "/signin", to: "sessions#new"
   resources :cats, only: [:index, :show, :new, :create, :edit, :update]

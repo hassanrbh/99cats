@@ -4,7 +4,7 @@ class CatsController < ApplicationController
         render :index
     end
     def show
-        @cat = Cat.find_by(:id => params[:user_id])
+        @cat = Cat.find_by(:id => params[:id])
         render :show
     end
     def new
