@@ -27,6 +27,12 @@ class UsersController < ApplicationController
     @user = current_user
     render :show
   end
+
+  def last_logins
+    req = Rack::Request.new(request.ip)
+    render :plain => req.ip
+  end
+
   private
 
   def user_params
