@@ -39,6 +39,10 @@ a {
         <td><mark>Description</mark></td>
         <td><%= @cat.description %></td>
     </tr>
+    <tr>
+        <td><mark>Owner</mark></td>
+        <td><%= @cat.owner.email %></td>
+    </tr>
 </table>
 <table>
     <tr><th colspan="4">Rental Requests</th></tr>
