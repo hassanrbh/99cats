@@ -11,9 +11,9 @@ input {
         - submit buttom
 -->
 <% if action == :edit %>
-    <%= action_url = cat_url(cat) %>
+    <% action_url = cat_url(cat) %>
 <% else %>
-    <%= action_url = cats_url %>
+    <% action_url = cats_url %>
 <% end %>
 
 <form action="<%= action_url %>" method="POST">
