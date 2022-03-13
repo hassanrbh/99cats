@@ -73,4 +73,7 @@ class CatRentalRequest < ApplicationRecord
             self.errors.add(:status, "already DENIED")
         end
     end
+    def pending?
+        self.status == 'PENDING'
+    end
 end

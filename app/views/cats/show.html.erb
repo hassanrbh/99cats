@@ -29,7 +29,7 @@ a {
     </tr>
     <tr>
         <td><mark>Sex</mark></td>
-        <td><%= @cat.sex %></td>
+        <td><%= @cat.sex %></td>.
     </tr>
     <tr>
         <td><mark>Birth Date</mark></td>
@@ -51,12 +51,8 @@ a {
         <th scope="col">End Date</th>
         <th scope="col">Status</th>
     </tr>
-    <%@cat.cat_rental_requests.each do |cat_rental_request|%>
-        <tr>
-            <td><mark><%= cat_rental_request.start_date %></mark></td>
-            <td><mark><%= cat_rental_request.end_date%></mark></td>
-            <td><mark><%= cat_rental_request.status%></mark></td>
-        </tr>
+    <%@cat.cat_rental_requests.order('start_date').each do |req|%>
+        <%= render 'req_tr', req: req%>
     <%end%>
 </table>
 

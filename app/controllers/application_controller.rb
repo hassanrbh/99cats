@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user
-    add_flash_types :success
+    add_flash_types :success, :error, :warning
     # Protect for SCRF Attacks
     protect_from_forgery with: :exception
 
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     # check if the current_user owns a cat
     def owns_cat?
         if current_user.cats.find_by(:id => params[:id]).nil?
-            redirect_to cats_url
+            redirect_to cats_url, :warning => "You are not the owner"
         end
     end
     # check if the user is login in
