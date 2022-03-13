@@ -23,7 +23,8 @@ class ApplicationController < ActionController::Base
     end
     # destroy methdod for loging out
     def logout!
-        current_user.try(:reset_session_token!)
+        # this reset_session_token is for login out for all the sessions 
+        #current_user.try(:reset_session_token!)
         session[:session_token] = nil
     end
 
