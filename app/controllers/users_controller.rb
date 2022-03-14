@@ -1,16 +1,19 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :already_logged_in?, only: [:new, :create]
+  before_action :already_logged_in?, only: %i[new create]
   # before action for the user to not see the users#show before log in
   def index
     @users = User.all
   end
+
   def create
     @user = User.new(user_params)
     if @user.save
       login_user!(@user)
       redirect_to cats_url
     else
-      redirect_to :new_session, success: "User already Exist"
+      redirect_to :new_session, success: 'User already Exist'
     end
   end
 
@@ -22,7 +25,7 @@ class UsersController < ApplicationController
   def show
     if current_user.nil?
       redirect_to new_user_path
-      return 
+      return
     end
     @user = current_user
     render :show
@@ -30,13 +33,12 @@ class UsersController < ApplicationController
 
   def last_logins
     req = Rack::Request.new(request.ip)
-    render :plain => req.ip
+    render plain: req.ip
   end
 
   private
 
   def user_params
-    params.require(:users).permit(:email,:password)
+    params.require(:users).permit(:email, :password)
   end
-
 end
