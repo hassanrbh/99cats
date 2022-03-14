@@ -115,3 +115,14 @@ div li button a {
     0% { top: 0px; background: #FFBABA; width: 100%;}
     100% {top: 200px; background: springgreen; width: 300px;}
 }
+.footer {
+    position: fixed;
+    display: block;
+    text-align: center;
+    padding: 3px;
+    background-color: darkgoldenrod;
+    color: white;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
