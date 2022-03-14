@@ -76,3 +76,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem :production do 
+  gem 'bcrypt', '~> 3.1.7'
+end
