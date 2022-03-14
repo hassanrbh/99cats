@@ -48,5 +48,11 @@ input {
     </textarea>
     <br>
     
-    <input type="submit" style="margin: 10px;" value="<%= action == :edit ? "Edit Cat" : "New Cat" %>">
+    <input type="submit" class="button_logout" value="<%= action == :edit ? "Edit Cat" : "New Cat" %>">
 </form>
+
+<% content_for :footer do %>
+    <div class="footer">
+       This is the new cat page
+    </div>
+<%end%>

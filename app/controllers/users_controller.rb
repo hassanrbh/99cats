@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login_user!(@user)
+      msg = UsermailerMailer.welcome_email(@user)
+      msg.deliver_now
       redirect_to cats_url
     else
       redirect_to :new_session, success: 'User already Exist'
