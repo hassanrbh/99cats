@@ -126,3 +126,9 @@ div li button a {
     bottom: 0;
     width: 100%;
 }
+a:hover {
+    color: hotpink;
+}
+a {
+    color: #65F4CD
+}
