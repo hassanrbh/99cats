@@ -2,11 +2,11 @@
 
 module ApplicationHelper
 
-    def signin_url
+    def sign_in_user
         "<a href=\"#{signin_url}\">Sign In</a>".html_safe
     end
     
-    def signup_url
+    def sign_up_user
         "<a href=\"#{signup_url}\">Sign Up</a>".html_safe
     end
 
@@ -19,3 +19,5 @@ module ApplicationHelper
         html.html_safe
     end
 end
+
+
